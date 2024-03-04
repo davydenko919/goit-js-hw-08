@@ -84,7 +84,34 @@ const galleryItemsHtml = images
 
 gallery.insertAdjacentHTML("beforeend", galleryItemsHtml);
 
+
 gallery.addEventListener("click", function (event) {
-  event.preventDefault();
-  console.log(event.target);
+    event.preventDefault();
+    const clickedElement = event.target;
+    if (clickedElement.classList.contains("gallery-image")) {
+        const imageUrl = clickedElement.dataset.source;
+        if (imageUrl) {
+            const instance = basicLightbox.create(`
+                <div class="modal">
+                    <img class="modal-img" src="${imageUrl}" width="1112" height="640">
+                </div>
+            `);
+            instance.show();
+        }
+    }
+});
+gallery.addEventListener("click", function (event) {
+    event.preventDefault();
+    const clickedElement = event.target;
+    if (clickedElement.classList.contains("gallery-image")) {
+        const imageUrl = clickedElement.dataset.source;
+        if (imageUrl) {
+            const instance = basicLightbox.create(`
+                <div class="modal">
+                    <img class="modal-img" src="${imageUrl}" width="1112" height="640">
+                </div>
+            `);
+            instance.show();
+        }
+    }
 });
